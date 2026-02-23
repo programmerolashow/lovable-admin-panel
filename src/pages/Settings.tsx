@@ -29,7 +29,7 @@ export default function Settings() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Settings</h1>
           <p className="mt-1 text-muted-foreground">
-            Manage your account settings and preferences
+            Manage your HomeKit store settings and preferences
           </p>
         </div>
 
