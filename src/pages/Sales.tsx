@@ -19,8 +19,8 @@ import {
 const salesStats = [
   { title: 'Total Sales', value: '$124,592', change: '+18.2% from last month', changeType: 'positive' as const, icon: DollarSign },
   { title: 'Transactions', value: '3,847', change: '+12.1% from last month', changeType: 'positive' as const, icon: CreditCard },
-  { title: 'Products Sold', value: '8,429', change: '+5.4% from last month', changeType: 'positive' as const, icon: Package },
-  { title: 'Refunds', value: '$2,847', change: '-3.2% from last month', changeType: 'negative' as const, icon: RefreshCcw },
+  { title: 'Items Sold', value: '8,429', change: '+5.4% from last month', changeType: 'positive' as const, icon: Package },
+  { title: 'Returns', value: '$2,847', change: '-3.2% from last month', changeType: 'negative' as const, icon: RefreshCcw },
 ];
 
 const monthlyData = [
@@ -32,22 +32,22 @@ const monthlyData = [
   { name: 'Jun', sales: 5500, orders: 349 },
 ];
 
-const productData = [
-  { name: 'Electronics', value: 35 },
-  { name: 'Clothing', value: 25 },
-  { name: 'Home & Garden', value: 20 },
-  { name: 'Sports', value: 12 },
-  { name: 'Other', value: 8 },
+const categoryData = [
+  { name: 'Kitchen Appliances', value: 35 },
+  { name: 'Cookware', value: 25 },
+  { name: 'Utensils & Tools', value: 20 },
+  { name: 'Storage & Org', value: 12 },
+  { name: 'Tableware', value: 8 },
 ];
 
-const COLORS = ['hsl(199, 89%, 48%)', 'hsl(142, 76%, 36%)', 'hsl(38, 92%, 50%)', 'hsl(0, 84%, 60%)', 'hsl(222, 47%, 40%)'];
+const COLORS = ['hsl(54, 90%, 55%)', 'hsl(142, 76%, 36%)', 'hsl(38, 92%, 50%)', 'hsl(0, 84%, 60%)', 'hsl(30, 20%, 40%)'];
 
 const topProducts = [
-  { name: 'MacBook Pro 14"', sales: 234, revenue: '$467,532' },
-  { name: 'iPhone 15 Pro', sales: 189, revenue: '$188,811' },
-  { name: 'AirPods Pro', sales: 456, revenue: '$114,456' },
-  { name: 'iPad Air', sales: 123, revenue: '$98,277' },
-  { name: 'Apple Watch', sales: 287, revenue: '$86,387' },
+  { name: 'KitchenPro Stand Mixer', sales: 234, revenue: '$46,732' },
+  { name: 'Smart Air Fryer XL', sales: 189, revenue: '$18,811' },
+  { name: 'Ceramic Knife Set (8-pc)', sales: 456, revenue: '$11,456' },
+  { name: 'Cast Iron Skillet 12"', sales: 312, revenue: '$9,360' },
+  { name: 'Bamboo Cutting Board Set', sales: 287, revenue: '$8,610' },
 ];
 
 export default function Sales() {
@@ -72,7 +72,7 @@ export default function Sales() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Sales Analytics</h1>
           <p className="mt-1 text-muted-foreground">
-            Track your sales performance and revenue metrics
+            Track your home appliances & kitchen utensils sales performance
           </p>
         </div>
 
@@ -91,18 +91,18 @@ export default function Sales() {
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={monthlyData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(222, 47%, 15%)" />
-                  <XAxis dataKey="name" stroke="hsl(215, 20%, 55%)" fontSize={12} />
-                  <YAxis stroke="hsl(215, 20%, 55%)" fontSize={12} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(30, 15%, 18%)" />
+                  <XAxis dataKey="name" stroke="hsl(40, 15%, 55%)" fontSize={12} />
+                  <YAxis stroke="hsl(40, 15%, 55%)" fontSize={12} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'hsl(222, 47%, 8%)',
-                      border: '1px solid hsl(222, 47%, 15%)',
+                      backgroundColor: 'hsl(30, 20%, 11%)',
+                      border: '1px solid hsl(30, 15%, 18%)',
                       borderRadius: '8px',
-                      color: 'hsl(210, 40%, 98%)',
+                      color: 'hsl(50, 80%, 90%)',
                     }}
                   />
-                  <Bar dataKey="sales" fill="hsl(199, 89%, 48%)" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="sales" fill="hsl(54, 90%, 55%)" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="orders" fill="hsl(142, 76%, 36%)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -116,7 +116,7 @@ export default function Sales() {
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
-                    data={productData}
+                    data={categoryData}
                     cx="50%"
                     cy="50%"
                     innerRadius={60}
@@ -124,23 +124,23 @@ export default function Sales() {
                     paddingAngle={5}
                     dataKey="value"
                   >
-                    {productData.map((_, index) => (
+                    {categoryData.map((_, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'hsl(222, 47%, 8%)',
-                      border: '1px solid hsl(222, 47%, 15%)',
+                      backgroundColor: 'hsl(30, 20%, 11%)',
+                      border: '1px solid hsl(30, 15%, 18%)',
                       borderRadius: '8px',
-                      color: 'hsl(210, 40%, 98%)',
+                      color: 'hsl(50, 80%, 90%)',
                     }}
                   />
                 </PieChart>
               </ResponsiveContainer>
             </div>
             <div className="mt-4 space-y-2">
-              {productData.map((item, index) => (
+              {categoryData.map((item, index) => (
                 <div key={item.name} className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2">
                     <div

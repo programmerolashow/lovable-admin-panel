@@ -10,42 +10,42 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-const blogPosts = [
+const products = [
   {
     id: 1,
-    title: 'Getting Started with React',
-    excerpt: 'Learn the fundamentals of React and build your first component...',
-    status: 'Published',
-    author: 'John Doe',
+    title: 'KitchenPro Stand Mixer',
+    excerpt: 'Professional-grade 600W stand mixer with 10 speed settings and stainless steel bowl...',
+    status: 'In Stock',
+    category: 'Appliances',
     date: 'Dec 28, 2025',
     views: 1234,
   },
   {
     id: 2,
-    title: 'Advanced TypeScript Patterns',
-    excerpt: 'Explore advanced TypeScript patterns for scalable applications...',
-    status: 'Draft',
-    author: 'Jane Smith',
+    title: 'Ceramic Chef Knife Set (8-piece)',
+    excerpt: 'Ultra-sharp ceramic knives with ergonomic handles, includes knife block...',
+    status: 'Low Stock',
+    category: 'Utensils',
     date: 'Dec 27, 2025',
-    views: 0,
-  },
-  {
-    id: 3,
-    title: 'Building APIs with Node.js',
-    excerpt: 'A comprehensive guide to building RESTful APIs with Node.js...',
-    status: 'Published',
-    author: 'Mike Johnson',
-    date: 'Dec 25, 2025',
     views: 856,
   },
   {
-    id: 4,
-    title: 'CSS Grid Mastery',
-    excerpt: 'Master CSS Grid layout and create stunning responsive designs...',
-    status: 'Published',
-    author: 'Sarah Wilson',
-    date: 'Dec 23, 2025',
+    id: 3,
+    title: 'Smart Air Fryer XL',
+    excerpt: 'Digital air fryer with 5.8L capacity, Wi-Fi enabled, 12 preset cooking programs...',
+    status: 'In Stock',
+    category: 'Appliances',
+    date: 'Dec 25, 2025',
     views: 2341,
+  },
+  {
+    id: 4,
+    title: 'Bamboo Cutting Board Set',
+    excerpt: 'Set of 3 organic bamboo cutting boards in different sizes, juice grooves...',
+    status: 'In Stock',
+    category: 'Utensils',
+    date: 'Dec 23, 2025',
+    views: 678,
   },
 ];
 
@@ -70,56 +70,56 @@ export default function Blog() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">Blog Posts</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">Products</h1>
             <p className="mt-1 text-muted-foreground">
-              Manage and publish your blog content
+              Manage your home appliances and kitchen utensils catalog
             </p>
           </div>
           <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
             <Plus className="mr-2 h-4 w-4" />
-            New Post
+            Add Product
           </Button>
         </div>
 
-        {/* Posts Table */}
+        {/* Products Table */}
         <div className="rounded-xl border border-border bg-card overflow-hidden">
           <table className="w-full">
             <thead>
               <tr className="border-b border-border bg-secondary/50">
-                <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Title</th>
+                <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Product</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Status</th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Author</th>
-                <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Date</th>
+                <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Category</th>
+                <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Added</th>
                 <th className="px-6 py-4 text-left text-sm font-medium text-muted-foreground">Views</th>
                 <th className="px-6 py-4 text-right text-sm font-medium text-muted-foreground">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {blogPosts.map((post) => (
-                <tr key={post.id} className="border-b border-border last:border-0 hover:bg-secondary/30 transition-colors">
+              {products.map((product) => (
+                <tr key={product.id} className="border-b border-border last:border-0 hover:bg-secondary/30 transition-colors">
                   <td className="px-6 py-4">
                     <div>
-                      <p className="font-medium text-foreground">{post.title}</p>
-                      <p className="text-sm text-muted-foreground line-clamp-1">{post.excerpt}</p>
+                      <p className="font-medium text-foreground">{product.title}</p>
+                      <p className="text-sm text-muted-foreground line-clamp-1">{product.excerpt}</p>
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <span
                       className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                        post.status === 'Published'
+                        product.status === 'In Stock'
                           ? 'bg-success/10 text-success'
                           : 'bg-warning/10 text-warning'
                       }`}
                     >
-                      {post.status}
+                      {product.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-muted-foreground">{post.author}</td>
-                  <td className="px-6 py-4 text-sm text-muted-foreground">{post.date}</td>
+                  <td className="px-6 py-4 text-sm text-muted-foreground">{product.category}</td>
+                  <td className="px-6 py-4 text-sm text-muted-foreground">{product.date}</td>
                   <td className="px-6 py-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <Eye className="h-3.5 w-3.5" />
-                      {post.views.toLocaleString()}
+                      {product.views.toLocaleString()}
                     </div>
                   </td>
                   <td className="px-6 py-4 text-right">

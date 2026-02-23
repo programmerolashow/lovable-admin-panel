@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  LayoutDashboard, 
-  FileText, 
+  Home, 
+  UtensilsCrossed, 
   TrendingUp, 
   Settings, 
   LogOut
@@ -10,8 +10,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-  { name: 'Blog', href: '/blog', icon: FileText },
+  { name: 'Dashboard', href: '/', icon: Home },
+  { name: 'Products', href: '/blog', icon: UtensilsCrossed },
   { name: 'Sales', href: '/sales', icon: TrendingUp },
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
@@ -26,9 +26,9 @@ export function Sidebar() {
         {/* Logo */}
         <div className="flex h-16 items-center gap-2 border-b border-sidebar-border px-6">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
-            <LayoutDashboard className="h-5 w-5 text-primary-foreground" />
+            <Home className="h-5 w-5 text-primary-foreground" />
           </div>
-          <span className="text-lg font-semibold text-sidebar-foreground">Ädmin Dashboard Demo</span>
+          <span className="text-lg font-semibold text-sidebar-foreground">HomeKit</span>
         </div>
 
         {/* Navigation */}
